@@ -1,0 +1,24 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && \
+    apt-get install -y \
+    python3 python3-numpy python3-nose python3-pandas python-h5py \
+    python python-numpy python-nose python-pandas python3-h5py \
+    pep8 python-pip python3-pip python-wheel \
+    python-sphinx && \
+    pip3 install --upgrade setuptools psycopg2
+#COPY requirements.txt /opt/app/requirements.txt
+#RUN pip install -r /opt/app/requirements.txt
+
+FROM envoyproxy/envoy-alpine:latest
+RUN apk update && apk add python3 bash python3-dev
+RUN python3 --version && pip3 --version
+RUN pip3 install -q Flask==0.11.1 requests==2.18.4 \
+flask_sqlalchemy==2.3.1 Flask-Script Flask-Migrate 
+RUN mkdir /code
+ADD ./service.py /code
+ADD ./chatbox/backend/*.py /code/
+ADD ./start_service.sh /usr/local/bin/start_service.sh
+RUN chmod u+x /usr/local/bin/start_service.sh
+ENTRYPOINT /usr/local/bin/start_service.sh
+
