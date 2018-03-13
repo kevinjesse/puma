@@ -10,7 +10,7 @@ import requests
 #app specific
 #home = os.path.expanduser("/home/ubuntu")
 #sys.path.append('/home/ubuntu/chatbox/backend/')
-sys.path.insert(0, "/home/ubuntu/chatbox/backend")
+sys.path.insert(0, "/home/ubuntu/puma/chatbox/backend")
 import dialogueCtrl as dctrl
 import uuid
 import json
@@ -43,10 +43,14 @@ TRACE_HEADERS_TO_PROPAGATE = [
 
 
 @app.route('/service/<service_number>', methods=['POST'])
-#@app.route('/service/<service_number>')
-def hello(service_number):
-    #return "OFFLINE"
-    #app specific html container
+def service(service_number):
+    return puma(request)
+
+
+
+
+def puma(request):
+    
     _text = request.form['chatText']
     _mode = request.form['mode']
     _id = str(request.form['UUID'])
@@ -54,14 +58,13 @@ def hello(service_number):
     if _id == '-1':
         _id = str(uuid.uuid4())
 
-    #app specific python container
-    response, userid, passiveLen, signal = dctrl.dialogueCtrl(json.dumps({'text':_text, 'mode':_mode,'id':_id}))
+    # app specific python container
+    response, userid, passiveLen, signal = dctrl.dialogueCtrl(json.dumps({'text': _text, 'mode': _mode, 'id': _id}))
     # if response == dctrl.end_dialogue:
     #     signal = 'end'
     if signal != "listen":
         dctrl.dialogueIdle(userid, debug=True)
-    return json.dumps({'response':response, 'userid': userid, 'signal':signal, 'passiveLen':passiveLen})
-    #return ('hi')
+    return json.dumps({'response': response, 'userid': userid, 'signal': signal, 'passiveLen': passiveLen})
 
 
 @app.route('/trace/<service_number>')
@@ -77,6 +80,8 @@ def trace(service_number):
             'hostname: {}\n'.format(os.environ['SERVICE_NAME'], 
                                     socket.gethostname(),
                                     socket.gethostbyname(socket.gethostname())))
+
+
 
 
 @app.route('/')
