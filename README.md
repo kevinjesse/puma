@@ -3,6 +3,9 @@
 Module for application migration to distributed load balance and proxy requests framework through service definition and code encapsulation.
 
 A running instance of our framework on a migrated version of our dialog movie recommendation engine with matrix factorization is available to test at http://puma251.ddns.net:8080/ 
+
+The code respository is located here: https://github.com/kevinjesse/puma
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
