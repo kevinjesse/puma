@@ -31,7 +31,11 @@ PUMA is ready to run out of the box without needing to be built. To run, simply 
 ```puma/envoy/examples/puma-proxy``` directory. 
 
 ### Coding Contributions
-Our coding contributions can be summarized in the following expanded directories. Directories not expanded do not contain PUMA modifications
+From a very high level our modifications reside in benchmark, benchmark_puma, chatbox, and envoy/puma_proxy 
+
+Our coding contributions can be summarized in the following expanded directories. Directories not expanded do not contain PUMA modifications. 
+
+This is a more detailed hierarchy of modified directories.
 ```
 ./puma
 ├── benchmark
