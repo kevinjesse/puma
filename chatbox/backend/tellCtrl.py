@@ -83,8 +83,8 @@ def toText(movieWithScore):
         output.append("How about " + data[1] + " (" + data[
             3] + ")? ")
         if len(data) > 10:
-            dlist = data[12].split(' ')
-            alist = data[16].split(' ')
+            dlist = data[11].split(' ')
+            alist = data[14].split(' ')
             actorNameList = movieCtrl.actorsbyID(alist)
             directorNameList = movieCtrl.actorsbyID(dlist)
             output.append(data[1] + " stars " + ", ".join(actorNameList) + " and is directed by " + \
