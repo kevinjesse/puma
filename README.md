@@ -6,6 +6,8 @@ A running instance of our framework on a migrated version of our dialog movie re
 
 The code respository is located here: https://github.com/kevinjesse/puma
 
+Read the [paper](https://github.com/kevinjesse/puma/blob/master/Parallel%20Unconcentrated%20Management%20for%20Applications%20(PUMA)%20Applied%20to%20Dialog%20Systems.pdf "Paper")!
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
